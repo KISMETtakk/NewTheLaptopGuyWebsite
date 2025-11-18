@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Inter', 'system-ui', 'sans-serif';
+  --font-mono: 'JetBrains Mono', 'monospace';
+  
+  /* High-contrast black and white theme */
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  
+  --color-card: #0a0a0a;
+  --color-card-foreground: #ffffff;
+  
+  --color-popover: #0a0a0a;
+  --color-popover-foreground: #ffffff;
+  
+  --color-primary: #ffffff;
+  --color-primary-foreground: #000000;
+  
+  --color-secondary: #1a1a1a;
+  --color-secondary-foreground: #ffffff;
+  
+  --color-muted: #262626;
+  --color-muted-foreground: #a3a3a3;
+  
+  --color-accent: #171717;
+  --color-accent-foreground: #ffffff;
+  
+  --color-destructive: #7f1d1d;
+  --color-destructive-foreground: #ffffff;
+  
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-ring: #ffffff;
+  
+  --radius: 0.5rem;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  overflow-x: hidden;
+}
+
+/* Added prefix to all animation keyframes */
+@keyframes ztm-trainair-tshiamo-coded-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-countUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-laptop-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(120px);
+  }
+}
+
+.ztm-trainair-tshiamo-coded-animate-fade-in {
+  animation: ztm-trainair-tshiamo-coded-fadeIn 0.6s ease-out forwards;
+}
+
+.ztm-trainair-tshiamo-coded-animate-slide-in {
+  animation: ztm-trainair-tshiamo-coded-slideIn 0.6s ease-out forwards;
+}
+
+.ztm-trainair-tshiamo-coded-animate-scan {
+  animation: ztm-trainair-tshiamo-coded-scan 2s ease-in-out infinite;
+}
