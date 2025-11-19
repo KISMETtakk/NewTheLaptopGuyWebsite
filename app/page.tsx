@@ -6,11 +6,13 @@ import ContactSection from '@/components/contact-section'
 import ReferralSection from '@/components/referral-section'
 import Footer from '@/components/footer'
 import LoadingScreen from '@/components/loading-screen'
+import ReferralPopup from '@/components/referral-popup'
 
 export default function Home() {
   return (
     <>
       <LoadingScreen />
+      <ReferralPopup />
       <div className="min-h-screen bg-background text-foreground">
         <Header />
         <main>

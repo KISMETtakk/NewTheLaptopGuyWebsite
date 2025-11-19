@@ -35,7 +35,7 @@ export default function ReferralSection() {
   }, [])
 
   return (
-    <section id="referral" className="ztm-trainair-tshiamo-coded-referral-section py-24 px-6 lg:px-8 border-t border-white/5" ref={sectionRef}>
+    <section id="referrals" className="ztm-trainair-tshiamo-coded-referral-section py-24 px-6 lg:px-8 border-t border-white/5" ref={sectionRef}>
       <div className="ztm-trainair-tshiamo-coded-referral-container mx-auto max-w-4xl">
         <div className="opacity-0 ztm-trainair-tshiamo-coded-animate-fade-in text-center mb-16">
           <h2 className="ztm-trainair-tshiamo-coded-section-title text-4xl font-light tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">

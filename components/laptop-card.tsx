@@ -12,6 +12,7 @@ interface LaptopCardProps {
     price: string
     performance: number
     summary: string
+    images: string[]
   }
   index: number
 }
@@ -61,12 +62,12 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
     if (!isMobile && isHovering) {
       // Desktop hover behavior - keep as is
       intervalRef.current = setInterval(() => {
-        setCurrentImage((prev) => (prev + 1) % 3)
+        setCurrentImage((prev) => (prev + 1) % laptop.images.length)
       }, 2000)
     } else if (isMobile) {
       // Mobile auto-play behavior
       intervalRef.current = setInterval(() => {
-        setCurrentImage((prev) => (prev + 1) % 3)
+        setCurrentImage((prev) => (prev + 1) % laptop.images.length)
       }, 3000)
     } else {
       if (intervalRef.current) {
@@ -103,22 +104,22 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
     if (Math.abs(swipeDistance) > minSwipeDistance) {
       if (swipeDistance > 0) {
         // Swipe left - next image
-        setCurrentImage((prev) => (prev + 1) % 3)
+        setCurrentImage((prev) => (prev + 1) % laptop.images.length)
       } else {
         // Swipe right - previous image
-        setCurrentImage((prev) => (prev - 1 + 3) % 3)
+        setCurrentImage((prev) => (prev - 1 + laptop.images.length) % laptop.images.length)
       }
     }
   }
 
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation()
-    setCurrentImage((prev) => (prev - 1 + 3) % 3)
+    setCurrentImage((prev) => (prev - 1 + laptop.images.length) % laptop.images.length)
   }
 
   const handleNextImage = (e: React.MouseEvent) => {
     e.stopPropagation()
-    setCurrentImage((prev) => (prev + 1) % 3)
+    setCurrentImage((prev) => (prev + 1) % laptop.images.length)
   }
 
   useEffect(() => {
@@ -170,29 +171,32 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Placeholder for laptop images */}
-        <div className="ztm-trainair-tshiamo-coded-image-placeholder absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="ztm-trainair-tshiamo-coded-brand-box mb-4 inline-flex h-24 w-32 items-center justify-center border border-white/20 bg-white/5">
-              <span className="text-sm font-light text-white/50">
-                {brand} {laptop.processor}
-              </span>
-            </div>
-            <div className="ztm-trainair-tshiamo-coded-image-indicators flex justify-center gap-1">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className={`ztm-trainair-tshiamo-coded-indicator h-1 w-8 transition-all duration-500 ${
-                    currentImage === i ? 'bg-white' : 'bg-white/20'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+        {/* Actual images */}
+        {laptop.images.map((image, i) => (
+          <img
+            key={i}
+            src={image || "/placeholder.svg"}
+            alt={`${brand} ${laptop.processor} - Image ${i + 1}`}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+              currentImage === i ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
+
+        {/* Image indicators */}
+        <div className="ztm-trainair-tshiamo-coded-image-indicators absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/50 px-3 py-2 backdrop-blur-sm border border-white/20">
+          {laptop.images.map((_, i) => (
+            <div
+              key={i}
+              className={`ztm-trainair-tshiamo-coded-indicator h-1.5 w-8 transition-all duration-500 ${
+                currentImage === i ? 'bg-white' : 'bg-white/30'
+              }`}
+            />
+          ))}
         </div>
 
         {isMobile && showSwipeHint && (
-          <div className="ztm-trainair-tshiamo-coded-swipe-hint absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 px-4 py-2 text-xs text-white/70 backdrop-blur-sm border border-white/20 animate-pulse">
+          <div className="ztm-trainair-tshiamo-coded-swipe-hint absolute top-4 left-1/2 -translate-x-1/2 bg-black/80 px-4 py-2 text-xs text-white/70 backdrop-blur-sm border border-white/20 animate-pulse">
             ← Swipe to browse →
           </div>
         )}

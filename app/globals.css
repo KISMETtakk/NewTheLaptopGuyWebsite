@@ -104,6 +104,73 @@ body {
   }
 }
 
+/* Added popup animations */
+@keyframes ztm-trainair-tshiamo-coded-popup-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-popup-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-text-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-cta-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-icon-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .ztm-trainair-tshiamo-coded-animate-fade-in {
   animation: ztm-trainair-tshiamo-coded-fadeIn 0.6s ease-out forwards;
 }
@@ -114,4 +181,152 @@ body {
 
 .ztm-trainair-tshiamo-coded-animate-scan {
   animation: ztm-trainair-tshiamo-coded-scan 2s ease-in-out infinite;
+}
+
+/* Added popup styles */
+/* Popup Styles */
+.ztm-trainair-tshiamo-coded-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 9998;
+  animation: ztm-trainair-tshiamo-coded-popup-fade-in 0.3s ease-out;
+}
+
+.ztm-trainair-tshiamo-coded-popup-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.ztm-trainair-tshiamo-coded-popup {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 100%;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  animation: ztm-trainair-tshiamo-coded-popup-scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ztm-trainair-tshiamo-coded-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ztm-trainair-tshiamo-coded-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ztm-trainair-tshiamo-coded-popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.ztm-trainair-tshiamo-coded-popup-icon {
+  color: white;
+  animation: ztm-trainair-tshiamo-coded-icon-bounce 2s ease-in-out infinite;
+}
+
+.ztm-trainair-tshiamo-coded-icon-path-1,
+.ztm-trainair-tshiamo-coded-icon-path-2,
+.ztm-trainair-tshiamo-coded-icon-path-3 {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ztm-trainair-tshiamo-coded-icon-draw 1s ease-out forwards;
+}
+
+.ztm-trainair-tshiamo-coded-icon-path-2 {
+  animation-delay: 0.2s;
+}
+
+.ztm-trainair-tshiamo-coded-icon-path-3 {
+  animation-delay: 0.4s;
+}
+
+.ztm-trainair-tshiamo-coded-popup-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: white;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ztm-trainair-tshiamo-coded-popup-message {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ztm-trainair-tshiamo-coded-popup-submessage {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  margin: -0.5rem 0 0 0;
+}
+
+.ztm-trainair-tshiamo-coded-text-animate {
+  display: inline-block;
+  opacity: 0;
+  animation: ztm-trainair-tshiamo-coded-text-fade-up 0.6s ease-out forwards;
+}
+
+.ztm-trainair-tshiamo-coded-popup-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.ztm-trainair-tshiamo-coded-cta-btn {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  color: black;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: ztm-trainair-tshiamo-coded-cta-pulse 2s ease-in-out infinite;
+}
+
+.ztm-trainair-tshiamo-coded-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.ztm-trainair-tshiamo-coded-cta-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  animation: ztm-trainair-tshiamo-coded-shine 3s ease-in-out infinite;
 }
