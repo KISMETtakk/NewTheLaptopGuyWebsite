@@ -30,7 +30,20 @@ export default function Footer() {
               >
                 <MessageCircle className="h-4 w-4" />
                 <span>WhatsApp: +27 81 355 6089</span>
+                
               </a>
+
+                            <a
+                href="https://api.whatsapp.com/send/?phone=27817134203&text=Hi+there%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-light text-white/60 transition-colors hover:text-white"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>WhatsApp: +27 81 713 4203</span>
+                
+              </a>
+
               <div className="flex items-center gap-2 text-sm font-light text-white/60">
                 <Mail className="h-4 w-4" />
                 <span>info@thelaptopguy.co.za</span>
