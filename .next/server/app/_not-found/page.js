@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/NewTheLaptopGuyWebsite_bb498e82._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__ddb67936._.js")
+R.c("server/chunks/ssr/d459b_next_dist_esm_build_templates_app-page_0292ecdc.js")
+R.c("server/chunks/ssr/[root-of-the-server]__a255387e._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__92f4f9c2._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__ee8c0c06._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__a200f0e9._.js")
+R.c("server/chunks/ssr/d459b_next_dist_client_components_8c7be5aa._.js")
+R.c("server/chunks/ssr/d459b_next_dist_client_components_builtin_forbidden_e5046184.js")
+R.c("server/chunks/ssr/a0d01_ewTheLaptopGuyWebsite__next-internal_server_app__not-found_page_actions_7e693966.js")
+R.m(62747)
+module.exports=R.m(62747).exports

@@ -46,7 +46,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-2 text-sm font-light text-white/60">
                 <Mail className="h-4 w-4" />
-                <span>info@thelaptopguy.co.za</span>
+                <span>thelaptopguy@gmail.com</span>
               </div>
             </div>
           </div>

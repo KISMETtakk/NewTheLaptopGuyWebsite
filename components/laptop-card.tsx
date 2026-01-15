@@ -1,7 +1,9 @@
-'use client'
+"use client"
 
-import { useState, useEffect, useRef } from 'react'
-import { Cpu, HardDrive, Zap, Clock, ChevronLeft, ChevronRight } from 'lucide-react'
+import type React from "react"
+
+import { useState, useEffect, useRef } from "react"
+import { Cpu, HardDrive, Zap, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface LaptopCardProps {
   brand: string
@@ -13,6 +15,7 @@ interface LaptopCardProps {
     performance: number
     summary: string
     images: string[]
+    outOfStock?: boolean
   }
   index: number
 }
@@ -30,14 +33,39 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
   const touchEndX = useRef<number>(0)
   const imageContainerRef = useRef<HTMLDivElement>(null)
 
+  const [selectedRam, setSelectedRam] = useState<"8GB" | "16GB">("8GB")
+  const [selectedSsd, setSelectedSsd] = useState<"256GB" | "512GB">("256GB")
+
+  const basePrice = Number.parseInt(laptop.price.replace(/[R,]/g, ""))
+  const ramUpgradePrice = selectedRam === "16GB" ? 200 : 0
+  const ssdUpgradePrice = selectedSsd === "512GB" ? 200 : 0
+  const totalPrice = basePrice + ramUpgradePrice + ssdUpgradePrice
+  const formattedPrice = `R${totalPrice.toLocaleString()}`
+
   const whatsappLinks = [
-    'https://api.whatsapp.com/send/?phone=27813556089&text=Hi+Tshiamo%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0',
-    'https://api.whatsapp.com/send/?phone=27817134203&text=Hi+Gucci%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0',
+    "https://api.whatsapp.com/send/?phone=27813556089&text=Hi+Tshiamo%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0",
+    "https://api.whatsapp.com/send/?phone=27817134203&text=Hi+Gucci%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0",
   ]
 
   const handleBuyNow = () => {
-    const randomLink = whatsappLinks[Math.floor(Math.random() * whatsappLinks.length)]
-    window.open(randomLink, '_blank')
+    const contactNames = ["Tshiamo", "Gucci"]
+    const phones = ["27813556089", "27817134203"]
+    const randomIndex = Math.floor(Math.random() * 2)
+    const contactName = contactNames[randomIndex]
+    const phone = phones[randomIndex]
+
+    const message = `Hi ${contactName}! I am interested in purchasing a laptop.
+
+Brand: ${brand}
+Processor: ${laptop.processor}
+RAM: ${selectedRam}
+Storage: ${selectedSsd}
+Price: ${formattedPrice}`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=${phone}&text=${encodedMessage}&type=phone_number&app_absent=0`
+
+    window.open(whatsappUrl, "_blank")
   }
 
   useEffect(() => {
@@ -45,8 +73,8 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
       setIsMobile(window.innerWidth < 1024)
     }
     checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
   useEffect(() => {
@@ -146,7 +174,7 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     )
 
     if (cardRef.current) {
@@ -160,7 +188,7 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
     <div
       ref={cardRef}
       className="ztm-trainair-tshiamo-coded-card group relative opacity-0 ztm-trainair-tshiamo-coded-animate-fade-in border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/[0.04]"
-      style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'forwards' }}
+      style={{ animationDelay: `${index * 150}ms`, animationFillMode: "forwards" }}
     >
       <div
         ref={imageContainerRef}
@@ -178,7 +206,7 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
             src={image || "/placeholder.svg"}
             alt={`${brand} ${laptop.processor} - Image ${i + 1}`}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-              currentImage === i ? 'opacity-100' : 'opacity-0'
+              currentImage === i ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
@@ -189,7 +217,7 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
             <div
               key={i}
               className={`ztm-trainair-tshiamo-coded-indicator h-1.5 w-8 transition-all duration-500 ${
-                currentImage === i ? 'bg-white' : 'bg-white/30'
+                currentImage === i ? "bg-white" : "bg-white/30"
               }`}
             />
           ))}
@@ -228,7 +256,9 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
           <h3 className="ztm-trainair-tshiamo-coded-card-title text-2xl font-light tracking-wide text-white">
             {brand} {laptop.processor}
           </h3>
-          <p className="ztm-trainair-tshiamo-coded-card-summary mt-2 text-sm font-light text-white/60 leading-relaxed">{laptop.summary}</p>
+          <p className="ztm-trainair-tshiamo-coded-card-summary mt-2 text-sm font-light text-white/60 leading-relaxed">
+            {laptop.summary}
+          </p>
         </div>
 
         {/* Specs grid */}
@@ -239,15 +269,93 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
           </div>
           <div className="ztm-trainair-tshiamo-coded-spec-item flex items-center gap-2">
             <Zap className="h-4 w-4 text-white/40" />
-            <span className="text-sm font-light text-white/70">{laptop.ram} RAM</span>
+            <span className="text-sm font-light text-white/70">{selectedRam} RAM</span>
           </div>
           <div className="ztm-trainair-tshiamo-coded-spec-item flex items-center gap-2">
             <HardDrive className="h-4 w-4 text-white/40" />
-            <span className="text-sm font-light text-white/70">{laptop.ssd} SSD</span>
+            <span className="text-sm font-light text-white/70">{selectedSsd} SSD</span>
           </div>
           <div className="ztm-trainair-tshiamo-coded-spec-item flex items-center gap-2">
             <Clock className="h-4 w-4 text-white/40" />
             <span className="text-sm font-light text-white/70">Fast & Reliable</span>
+          </div>
+        </div>
+
+        <div className="ztm-trainair-tshiamo-coded-config-section pt-4 border-t border-white/10 space-y-3">
+          {/* RAM Options */}
+          <div className="ztm-trainair-tshiamo-coded-config-group">
+            <p className="text-xs font-medium text-white/50 mb-2 tracking-wide uppercase">RAM Configuration</p>
+            <div className="flex gap-2">
+              <label
+                className={`ztm-trainair-tshiamo-coded-config-option flex-1 flex items-center gap-2 px-3 py-2 border cursor-pointer transition-all ${
+                  selectedRam === "8GB"
+                    ? "border-white bg-white/10 text-white"
+                    : "border-white/20 bg-white/[0.02] text-white/50 hover:border-white/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedRam === "8GB"}
+                  onChange={() => setSelectedRam("8GB")}
+                  className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
+                />
+                <span className="text-sm font-light">8GB</span>
+              </label>
+              <label
+                className={`ztm-trainair-tshiamo-coded-config-option flex-1 flex items-center gap-2 px-3 py-2 border cursor-pointer transition-all ${
+                  selectedRam === "16GB"
+                    ? "border-white bg-white/10 text-white"
+                    : "border-white/20 bg-white/[0.02] text-white/50 hover:border-white/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedRam === "16GB"}
+                  onChange={() => setSelectedRam("16GB")}
+                  className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
+                />
+                <span className="text-sm font-light">16GB</span>
+                <span className="text-xs text-white/40 ml-auto">+R200</span>
+              </label>
+            </div>
+          </div>
+
+          {/* SSD Options */}
+          <div className="ztm-trainair-tshiamo-coded-config-group">
+            <p className="text-xs font-medium text-white/50 mb-2 tracking-wide uppercase">SSD Configuration</p>
+            <div className="flex gap-2">
+              <label
+                className={`ztm-trainair-tshiamo-coded-config-option flex-1 flex items-center gap-2 px-3 py-2 border cursor-pointer transition-all ${
+                  selectedSsd === "256GB"
+                    ? "border-white bg-white/10 text-white"
+                    : "border-white/20 bg-white/[0.02] text-white/50 hover:border-white/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedSsd === "256GB"}
+                  onChange={() => setSelectedSsd("256GB")}
+                  className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
+                />
+                <span className="text-sm font-light">256GB</span>
+              </label>
+              <label
+                className={`ztm-trainair-tshiamo-coded-config-option flex-1 flex items-center gap-2 px-3 py-2 border cursor-pointer transition-all ${
+                  selectedSsd === "512GB"
+                    ? "border-white bg-white/10 text-white"
+                    : "border-white/20 bg-white/[0.02] text-white/50 hover:border-white/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedSsd === "512GB"}
+                  onChange={() => setSelectedSsd("512GB")}
+                  className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
+                />
+                <span className="text-sm font-light">512GB</span>
+                <span className="text-xs text-white/40 ml-auto">+R200</span>
+              </label>
+            </div>
           </div>
         </div>
 
@@ -268,15 +376,28 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
           </div>
         </div>
 
-        {/* Price and button */}
         <div className="ztm-trainair-tshiamo-coded-card-footer flex items-center justify-between pt-4">
-          <div className="ztm-trainair-tshiamo-coded-price text-3xl font-light text-white">{laptop.price}</div>
-          <button
-            onClick={handleBuyNow}
-            className="ztm-trainair-tshiamo-coded-buy-button px-6 py-3 text-sm font-medium tracking-wide border-2 border-white bg-white text-black transition-all hover:bg-transparent hover:text-white"
-          >
-            BUY NOW
-          </button>
+          <div className="ztm-trainair-tshiamo-coded-price text-3xl font-light text-white">{formattedPrice}</div>
+
+          {/* IN STOCK BUTTON (default) */}
+          {!laptop.outOfStock && (
+            <button
+              onClick={handleBuyNow}
+              className="ztm-trainair-tshiamo-coded-buy-button px-6 py-3 text-sm font-medium tracking-wide border-2 border-white bg-white text-black transition-all hover:bg-transparent hover:text-white"
+            >
+              BUY NOW
+            </button>
+          )}
+
+          {/* OUT OF STOCK BUTTON */}
+          {laptop.outOfStock && (
+            <button
+              disabled
+              className="ztm-trainair-tshiamo-coded-buy-button px-6 py-3 text-sm font-medium tracking-wide border-2 border-white/30 bg-white/10 text-white/40 cursor-not-allowed opacity-50"
+            >
+              OUT OF STOCK
+            </button>
+          )}
         </div>
       </div>
     </div>

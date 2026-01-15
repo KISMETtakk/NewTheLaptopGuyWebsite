@@ -8,19 +8,19 @@ const chargers = [
     brand: 'Dell',
     types: 'Original / Generic',
     wattage: '45W / 65W / 90W',
-    price: 'From R 299',
+    price: 'From R 349',
   },
   {
     brand: 'Lenovo',
     types: 'Original / Generic',
     wattage: '45W / 65W / 90W',
-    price: 'From R 299',
+    price: 'From R 349',
   },
   {
     brand: 'HP',
     types: 'Original / Generic',
     wattage: '45W / 65W / 90W',
-    price: 'From R 299',
+    price: 'From R 349',
   },
 ]
 
