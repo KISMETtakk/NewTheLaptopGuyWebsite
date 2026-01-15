@@ -25,8 +25,8 @@ const chargers = [
 ]
 
 const whatsappLinks = [
-  'https://api.whatsapp.com/send/?phone=27813556089&text=Hi+Tshiamo%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0',
-  'https://api.whatsapp.com/send/?phone=27817134203&text=Hi+Gucci%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0',
+  'https://api.whatsapp.com/send/?phone=27813556089&text=Hi+Tshiamo%21+I+am+interested+in+purchasing+a+laptop+charger.&type=phone_number&app_absent=0',
+  'https://api.whatsapp.com/send/?phone=27817134203&text=Hi+Gucci%21+I+am+interested+in+purchasing+a+laptop+charger.&type=phone_number&app_absent=0',
 ]
 
 export default function AccessoriesSection() {

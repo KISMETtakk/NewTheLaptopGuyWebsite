@@ -13,7 +13,7 @@ const laptopData = {
       performance: 7.6,
       summary: "Perfect for everyday tasks, web browsing, and office work",
       images: ["/laptops/Dell/i3/1.png", "/laptops/Dell/i3/2.png", "/laptops/Dell/i3/3.png"],
-      // outOfStock: true,
+      outOfStock: true,
     },
     {
       processor: "i5",
@@ -65,7 +65,7 @@ const laptopData = {
       performance: 9.5,
       summary: "High-performance computing for power users",
       images: ["/laptops/Lenovo/i7/1.png", "/laptops/Lenovo/i7/2.png", "/laptops/Lenovo/i7/3.png"],
-      // outOfStock: true,
+      outOfStock: true,
     },
   ],
   HP: [
