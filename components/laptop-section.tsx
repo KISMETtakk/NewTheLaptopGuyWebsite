@@ -65,7 +65,7 @@ const laptopData = {
       performance: 9.5,
       summary: "High-performance computing for power users",
       images: ["/laptops/Lenovo/i7/1.png", "/laptops/Lenovo/i7/2.png", "/laptops/Lenovo/i7/3.png"],
-      outOfStock: true,
+      //outOfStock: true,
     },
   ],
   HP: [
