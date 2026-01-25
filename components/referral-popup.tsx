@@ -21,11 +21,20 @@ export default function ReferralPopup() {
 
   const handleTakeMeThere = () => {
     setIsVisible(false)
+    // Set a flag to indicate programmatic scroll is happening
+    // This prevents the video popup from showing during this scroll
+    window.sessionStorage.setItem('ztm-programmatic-scroll', 'true')
+    
     // Scroll to referral section
     const referralSection = document.getElementById('referrals')
     if (referralSection) {
       referralSection.scrollIntoView({ behavior: 'smooth' })
     }
+    
+    // Clear the flag after scroll completes
+    setTimeout(() => {
+      window.sessionStorage.removeItem('ztm-programmatic-scroll')
+    }, 2000)
   }
 
   if (!isVisible) return null
@@ -90,7 +99,7 @@ export default function ReferralPopup() {
             {/* Title */}
             <h2 className="ztm-trainair-tshiamo-coded-popup-title">
               <span className="ztm-trainair-tshiamo-coded-text-animate">
-                Earn with Referrals!
+                Earn Rewards!
               </span>
             </h2>
 
@@ -103,7 +112,7 @@ export default function ReferralPopup() {
 
             <p className="ztm-trainair-tshiamo-coded-popup-submessage">
               <span className="ztm-trainair-tshiamo-coded-text-animate" style={{ animationDelay: '0.4s' }}>
-                R100 for you, top laptop for them. It's a win-win!
+                Your friend also gets a discount. It's a win-win!
               </span>
             </p>
 

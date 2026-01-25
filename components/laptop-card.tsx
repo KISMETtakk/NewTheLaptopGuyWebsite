@@ -36,11 +36,12 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
   const [selectedRam, setSelectedRam] = useState<"8GB" | "16GB">("8GB")
   const [selectedSsd, setSelectedSsd] = useState<"256GB" | "512GB">("256GB")
 
-  const basePrice = Number.parseInt(laptop.price.replace(/[R,]/g, ""))
+const basePrice = Number.parseInt(laptop.price.replace(/[R,]/g, ""))
   const ramUpgradePrice = selectedRam === "16GB" ? 200 : 0
   const ssdUpgradePrice = selectedSsd === "512GB" ? 200 : 0
   const totalPrice = basePrice + ramUpgradePrice + ssdUpgradePrice
-  const formattedPrice = `R${totalPrice.toLocaleString()}`
+  // Use explicit locale to prevent hydration mismatch between server and client
+  const formattedPrice = `R${totalPrice.toLocaleString('en-ZA')}`
 
   const whatsappLinks = [
     "https://api.whatsapp.com/send/?phone=27813556089&text=Hi+Tshiamo%21+I+am+interested+in+purchasing+a+laptop.&type=phone_number&app_absent=0",

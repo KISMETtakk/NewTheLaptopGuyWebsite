@@ -1,5 +1,7 @@
 'use client'
 
+import React from "react"
+
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
@@ -10,6 +12,7 @@ const navigation = [
   { name: 'Lenovo', href: '#lenovo' },
   { name: 'HP', href: '#hp' },
   { name: 'Accessories', href: '#accessories' },
+  { name: 'Videos', href: '#videos' },
   { name: 'Contact', href: '#contact' },
   { name: 'Referral', href: '#referrals' },
 ]

@@ -1,10 +1,84 @@
 @import 'tailwindcss';
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+ 
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem; /* Default shadcn radius, will be overridden by existing @theme inline */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+ 
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
 
 @theme inline {
   --font-sans: 'Inter', 'system-ui', 'sans-serif';
   --font-mono: 'JetBrains Mono', 'monospace';
   
-  /* High-contrast black and white theme */
+  /* High-contrast black and white theme (User's preserved colors) */
   --color-background: #000000;
   --color-foreground: #ffffff;
   
@@ -33,7 +107,39 @@
   --color-input: #262626;
   --color-ring: #ffffff;
   
-  --radius: 0.5rem;
+  --radius: 0.5rem; /* User's preserved radius */
+
+  /* Additional shadcn radius variants, aliased to user's radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Add sidebar color aliases if they were defined in the user's theme, or map to shadcn defaults */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* New chart colors from shadcn, added here as there's no conflict */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+ 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 * {
@@ -329,4 +435,166 @@ body {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
   animation: ztm-trainair-tshiamo-coded-shine 3s ease-in-out infinite;
+}
+
+/* Video Section Styles */
+@keyframes ztm-trainair-tshiamo-coded-video-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-title-slide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes ztm-trainair-tshiamo-coded-expanded-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ztm-trainair-tshiamo-coded-video-card {
+  transition: all 0.5s ease-out;
+}
+
+.ztm-trainair-tshiamo-coded-video-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  animation: ztm-trainair-tshiamo-coded-glow-pulse 2s ease-in-out infinite;
+}
+
+.ztm-trainair-tshiamo-coded-title-animate {
+  animation: ztm-trainair-tshiamo-coded-title-slide 1s ease-in-out infinite;
+}
+
+.ztm-trainair-tshiamo-coded-video-play-btn {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ztm-trainair-tshiamo-coded-video-control-btn {
+  transition: all 0.2s ease-out;
+}
+
+.ztm-trainair-tshiamo-coded-video-control-btn:active {
+  transform: scale(0.9);
+}
+
+/* Expanded Video Modal */
+.ztm-trainair-tshiamo-coded-video-expanded-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+  z-index: 9998;
+  animation: ztm-trainair-tshiamo-coded-popup-fade-in 0.3s ease-out;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  animation: ztm-trainair-tshiamo-coded-expanded-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 0.75rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-player {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: #000;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-player iframe {
+  border: none;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-info {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-info h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.ztm-trainair-tshiamo-coded-video-expanded-info p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Mobile touch hint animation */
+@keyframes ztm-trainair-tshiamo-coded-hint-fade {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ztm-trainair-tshiamo-coded-video-hint {
+  animation: ztm-trainair-tshiamo-coded-hint-fade 2s ease-in-out infinite;
 }
