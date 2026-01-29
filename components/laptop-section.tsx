@@ -20,7 +20,7 @@ const laptopData = {
       ram: "8GB",
       ssd: "256GB",
       price: "R 5,199",
-      performance: 9.6,
+      performance: 9.4,
       summary: "Ideal for multitasking, productivity, and light content creation",
       images: ["/laptops/Dell/i5/1.png", "/laptops/Dell/i5/2.png", "/laptops/Dell/i5/3.png"],
       // outOfStock: true,

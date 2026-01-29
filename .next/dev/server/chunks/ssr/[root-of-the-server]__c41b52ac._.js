@@ -1132,7 +1132,7 @@ const laptopData = {
             ram: "8GB",
             ssd: "256GB",
             price: "R 3,599",
-            performance: 7.6,
+            performance: 8.6,
             summary: "Perfect for everyday tasks, web browsing, and office work",
             images: [
                 "/laptops/Dell/i3/1.png",
@@ -1146,7 +1146,7 @@ const laptopData = {
             ram: "8GB",
             ssd: "256GB",
             price: "R 5,199",
-            performance: 9.2,
+            performance: 9.4,
             summary: "Ideal for multitasking, productivity, and light content creation",
             images: [
                 "/laptops/Dell/i5/1.png",
@@ -1173,8 +1173,8 @@ const laptopData = {
             processor: "i3",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 3,499",
-            performance: 7.3,
+            price: "R 3,599",
+            performance: 8.3,
             summary: "Reliable performance for daily computing needs",
             images: [
                 "/laptops/Lenovo/i3/1.png",
@@ -1187,8 +1187,8 @@ const laptopData = {
             processor: "i5",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 4,999",
-            performance: 8.7,
+            price: "R 5,099",
+            performance: 9.1,
             summary: "Balanced power and efficiency for professionals",
             images: [
                 "/laptops/Lenovo/i5/1.png",
@@ -1200,8 +1200,8 @@ const laptopData = {
             processor: "i7",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 5,499",
-            performance: 9.5,
+            price: "R 5,699",
+            performance: 9.6,
             summary: "High-performance computing for power users",
             images: [
                 "/laptops/Lenovo/i7/1.png",
@@ -1215,8 +1215,8 @@ const laptopData = {
             processor: "i3",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 3,599",
-            performance: 7.4,
+            price: "R 3,699",
+            performance: 8.1,
             summary: "Dependable laptop for essential computing tasks",
             images: [
                 "/laptops/Hp/i3/1.png",
@@ -1229,7 +1229,7 @@ const laptopData = {
             ram: "8GB",
             ssd: "256GB",
             price: "R 5,099",
-            performance: 8.6,
+            performance: 8.9,
             summary: "Versatile performance for work and entertainment",
             images: [
                 "/laptops/Hp/i5/1.png",
