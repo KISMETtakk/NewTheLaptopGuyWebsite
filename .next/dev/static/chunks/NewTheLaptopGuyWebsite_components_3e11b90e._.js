@@ -1209,7 +1209,7 @@ const laptopData = {
             processor: "i5",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 4,999",
+            price: "R 5,199",
             performance: 9.2,
             summary: "Ideal for multitasking, productivity, and light content creation",
             images: [
@@ -1244,13 +1244,14 @@ const laptopData = {
                 "/laptops/Lenovo/i3/1.png",
                 "/laptops/Lenovo/i3/2.png",
                 "/laptops/Lenovo/i3/3.png"
-            ]
+            ],
+            outOfStock: true
         },
         {
             processor: "i5",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 4,899",
+            price: "R 4,999",
             performance: 8.7,
             summary: "Balanced power and efficiency for professionals",
             images: [
@@ -1304,7 +1305,7 @@ const laptopData = {
             processor: "i7",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 5,699",
+            price: "R 5,899",
             performance: 9.4,
             summary: "Premium performance for intensive workloads",
             images: [
