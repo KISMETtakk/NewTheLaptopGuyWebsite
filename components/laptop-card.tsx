@@ -386,7 +386,7 @@ Price: ${formattedPrice}`
               onClick={handleBuyNow}
               className="ztm-trainair-tshiamo-coded-buy-button px-6 py-3 text-sm font-medium tracking-wide border-2 border-white bg-white text-black transition-all hover:bg-transparent hover:text-white"
             >
-              BUY NOW
+              Save Configuration
             </button>
           )}
 

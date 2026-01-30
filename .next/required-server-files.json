@@ -99,7 +99,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\TshiamoMatiza\\OneDrive - Business Collaborate\\Desktop\\My Projects\\Project 2",
+    "outputFileTracingRoot": "C:\\Users\\TshiamoMatiz_nc17dbk\\OneDrive - Collaborate Holdings\\Desktop\\My Projects\\Project 2",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -289,11 +289,11 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
     "turbopack": {
-      "root": "C:\\Users\\TshiamoMatiza\\OneDrive - Business Collaborate\\Desktop\\My Projects\\Project 2"
+      "root": "C:\\Users\\TshiamoMatiz_nc17dbk\\OneDrive - Collaborate Holdings\\Desktop\\My Projects\\Project 2"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\TshiamoMatiza\\OneDrive - Business Collaborate\\Desktop\\My Projects\\Project 2\\NewTheLaptopGuyWebsite",
+  "appDir": "C:\\Users\\TshiamoMatiz_nc17dbk\\OneDrive - Collaborate Holdings\\Desktop\\My Projects\\Project 2\\NewTheLaptopGuyWebsite",
   "relativeAppDir": "NewTheLaptopGuyWebsite",
   "files": [
     ".next\\routes-manifest.json",
