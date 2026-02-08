@@ -460,8 +460,8 @@ function LaptopCard({ brand, laptop, index }) {
     const [selectedRam, setSelectedRam] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$NewTheLaptopGuyWebsite$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("8GB");
     const [selectedSsd, setSelectedSsd] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$NewTheLaptopGuyWebsite$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("256GB");
     const basePrice = Number.parseInt(laptop.price.replace(/[R,]/g, ""));
-    const ramUpgradePrice = selectedRam === "16GB" ? 200 : 0;
-    const ssdUpgradePrice = selectedSsd === "512GB" ? 200 : 0;
+    const ramUpgradePrice = selectedRam === "16GB" ? 300 : 0;
+    const ssdUpgradePrice = selectedSsd === "512GB" ? 300 : 0;
     const totalPrice = basePrice + ramUpgradePrice + ssdUpgradePrice;
     // Use explicit locale to prevent hydration mismatch between server and client
     const formattedPrice = `R${totalPrice.toLocaleString('en-ZA')}`;
@@ -939,7 +939,7 @@ Price: ${formattedPrice}`;
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$NewTheLaptopGuyWebsite$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "text-xs text-white/40 ml-auto",
-                                                        children: "+R200"
+                                                        children: "+R300"
                                                     }, void 0, false, {
                                                         fileName: "[project]/NewTheLaptopGuyWebsite/components/laptop-card.tsx",
                                                         lineNumber: 319,
@@ -1027,7 +1027,7 @@ Price: ${formattedPrice}`;
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$NewTheLaptopGuyWebsite$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "text-xs text-white/40 ml-auto",
-                                                        children: "+R200"
+                                                        children: "+R300"
                                                     }, void 0, false, {
                                                         fileName: "[project]/NewTheLaptopGuyWebsite/components/laptop-card.tsx",
                                                         lineNumber: 357,
@@ -1195,7 +1195,7 @@ const laptopData = {
             processor: "i3",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 3,599",
+            price: "R 4,599",
             performance: 8.6,
             summary: "Perfect for everyday tasks, web browsing, and office work",
             images: [
@@ -1237,7 +1237,7 @@ const laptopData = {
             processor: "i3",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 3,599",
+            price: "R 4,599",
             performance: 8.3,
             summary: "Reliable performance for daily computing needs",
             images: [
@@ -1279,7 +1279,7 @@ const laptopData = {
             processor: "i3",
             ram: "8GB",
             ssd: "256GB",
-            price: "R 3,699",
+            price: "R 4,699",
             performance: 8.1,
             summary: "Dependable laptop for essential computing tasks",
             images: [

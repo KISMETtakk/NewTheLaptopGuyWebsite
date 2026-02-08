@@ -37,8 +37,8 @@ export default function LaptopCard({ brand, laptop, index }: LaptopCardProps) {
   const [selectedSsd, setSelectedSsd] = useState<"256GB" | "512GB">("256GB")
 
 const basePrice = Number.parseInt(laptop.price.replace(/[R,]/g, ""))
-  const ramUpgradePrice = selectedRam === "16GB" ? 200 : 0
-  const ssdUpgradePrice = selectedSsd === "512GB" ? 200 : 0
+  const ramUpgradePrice = selectedRam === "16GB" ? 300 : 0
+  const ssdUpgradePrice = selectedSsd === "512GB" ? 300 : 0
   const totalPrice = basePrice + ramUpgradePrice + ssdUpgradePrice
   // Use explicit locale to prevent hydration mismatch between server and client
   const formattedPrice = `R${totalPrice.toLocaleString('en-ZA')}`
@@ -316,7 +316,7 @@ Price: ${formattedPrice}`
                   className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
                 />
                 <span className="text-sm font-light">16GB</span>
-                <span className="text-xs text-white/40 ml-auto">+R200</span>
+                <span className="text-xs text-white/40 ml-auto">+R300</span>
               </label>
             </div>
           </div>
@@ -354,7 +354,7 @@ Price: ${formattedPrice}`
                   className="ztm-trainair-tshiamo-coded-checkbox h-4 w-4 border-white/30 bg-transparent checked:bg-white"
                 />
                 <span className="text-sm font-light">512GB</span>
-                <span className="text-xs text-white/40 ml-auto">+R200</span>
+                <span className="text-xs text-white/40 ml-auto">+R300</span>
               </label>
             </div>
           </div>
